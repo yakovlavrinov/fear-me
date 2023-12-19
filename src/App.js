@@ -1,3 +1,4 @@
+import AddUser from "./components/AddUser";
 import Headers from "./components/Headers";
 import Users from "./components/Users";
 
@@ -8,7 +9,9 @@ function App() {
       <main>
         <Users />
       </main>
-      <aside></aside>
+      <aside>
+        <AddUser />
+      </aside>
     </div>
   );
 }
