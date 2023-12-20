@@ -1,15 +1,47 @@
 import React, { Component } from "react";
 
 class AddUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstname: "",
+      lastname: "",
+      bio: "",
+      age: 1,
+      isHappy: false,
+    };
+  }
   render() {
     return (
       <form>
-        <input placeholder="Имя" />
-        <input placeholder="Фамилия" />
-        <textarea placeholder="Биология"></textarea>
+        <input
+          placeholder="Имя"
+          onChange={(e) => this.setState({ firstname: e.target.value })}
+        />
+        <input
+          placeholder="Фамилия"
+          onChange={(e) => this.setState({ lastname: e.target.value })}
+        />
+        <textarea
+          placeholder="Биография"
+          onChange={(e) => this.setState({ bio: e.target.value })}
+        ></textarea>
         <label htmlFor="isHappy">Счастлив?</label>
-        <input type="chackbox" id="isHappy" />
-        <button type="button">Добавить</button>
+        <input
+          type="checkbox"
+          id="isHappy"
+          onChange={(e) => this.setState({ isHappy: e.target.checked })}
+        />
+        <button
+          type="button"
+          onClick={() =>
+            this.props.onAdd({
+              ...this.state,
+            })
+          }
+        >
+          Добавить
+        </button>
       </form>
     );
   }
