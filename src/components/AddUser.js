@@ -13,7 +13,7 @@ class AddUser extends Component {
   }
   render() {
     return (
-      <form>
+      <form ref={(el) => (this.myForm = el)}>
         <input
           placeholder="Имя"
           onChange={(e) => this.setState({ firstname: e.target.value })}
@@ -34,11 +34,12 @@ class AddUser extends Component {
         />
         <button
           type="button"
-          onClick={() =>
+          onClick={() => {
+            this.myForm.reset();
             this.props.onAdd({
               ...this.state,
-            })
-          }
+            });
+          }}
         >
           Добавить
         </button>
