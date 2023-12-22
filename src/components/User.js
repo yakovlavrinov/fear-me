@@ -26,11 +26,14 @@ class User extends Component {
           className="edit-icon"
         />
         <h3>
-          {this.user.firstname} {this.user.lastname}
+          {this.user.first_name} {this.user.last_name}
         </h3>
-        <p>{this.user.bio}</p>
+        <p>{this.user.email}</p>
+        <img src={this.user.avatar} alt="adwa" />
         <b>{this.user.isHappy ? "Счастлив" : "Не счастлив"}</b>
-        {this.state.editForm && <AddUser onAdd={this.props.onEdit} />}
+        {this.state.editForm && (
+          <AddUser user={this.user} onAdd={this.props.onEdit} />
+        )}
       </div>
     );
   }
